@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+// # Metadata for protoc-gen-template
+//
+// This provides a set of options for annotating protobuf source code which 
+// are parse by `protoc-gen-template` and exposed in the data available to
+// templates.
+package template;
+option go_package = "github.com/ReturnPath/protoc-gen-template/meta";
+option (file_meta) = {
+  visibility: PRIVATE,
+};
+
+import "google/protobuf/descriptor.proto";
+
+enum Visibility {
+  PUBLIC = 0;
+  PRIVATE = 1;
+}
+
+message FileMetadata {
+  Visibility visibility = 1;
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.FileOptions {
+  FileMetadata file_meta = 50001;
+}
+
+message MessageMetadata {
+  Visibility visibility = 1;
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.MessageOptions {
+  MessageMetadata message_meta = 50001;
+}
+
+message FieldMetadata {
+  Visibility visibility = 1;
+
+  // A string identifying a random-value generator for "example" code
+  string generator = 2;
+
+  double example_double = 3;      // An example value for the double-typed fields
+  float example_float = 4;        // An example value for the float-typed fields
+  int32 example_int32 = 5;        // An example value for the int32-typed fields
+  int64 example_int64 = 6;        // An example value for the int64-typed fields
+  uint32 example_uint32 = 7;      // An example value for the uint32-typed fields
+  uint64 example_uint64 = 8;      // An example value for the uint64-typed fields
+  sint32 example_sint32 = 9;      // An example value for the sint32-typed fields
+  sint64 example_sint64 = 10;     // An example value for the sint64-typed fields
+  fixed32 example_fixed32 = 11;   // An example value for the fixed32-typed fields
+  fixed64 example_fixed64 = 12;   // An example value for the fixed64-typed fields
+  sfixed32 example_sfixed32 = 13; // An example value for the sfixed32-typed fields
+  sfixed64 example_sfixed64 = 14; // An example value for the sfixed64-typed fields
+  bool example_bool = 15;         // An example value for the bool-typed fields
+  string example_string = 16;     // An example value for the string-typed fields
+  bytes example_bytes = 17;       // An example value for the bytes-typed fields
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.FieldOptions {
+  FieldMetadata field_meta = 50001;
+}
+
+// NOTE: Not allowed apparently?
+// extend google.protobuf.OneofOptions {
+//   string oneof_option = 50004;
+// }
+
+message EnumMetadata {
+  Visibility visibility = 1;
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.EnumOptions {
+  EnumMetadata enum_meta = 50001;
+}
+
+message EnumValueMetadata {
+  Visibility visibility = 1;
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.EnumValueOptions {
+  EnumValueMetadata enum_value_meta = 50001;
+}
+
+message ServiceMetadata {
+  Visibility visibility = 1;
+
+  // The service address, ie "grpc.example.com"
+  string addr = 2;
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.ServiceOptions {
+  ServiceMetadata service_meta = 50001;
+}
+
+message MethodMetadata {
+  Visibility visibility = 1;
+
+  // Arbitrary string tags
+  repeated string tags = 2048;
+
+  // Arbitrary key/value metadata
+  map<string, string> extra = 2047;
+}
+
+extend google.protobuf.MethodOptions {
+  MethodMetadata method_meta = 50001;
+}

@@ -1,0 +1,12 @@
+package: github.com/ReturnPath/proto
+import:
+- package: github.com/golang/protobuf
+  version: 69b215d01a5606c843240eab4937eab3acee6530
+  subpackages:
+    - proto
+    - protoc-gen-go
+    - protoc-gen-go/generator
+    - protoc-gen-go/descriptor
+    - protoc-gen-go/plugin
+- package: github.com/kr/pretty
+- package: github.com/pkg/errors

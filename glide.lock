@@ -1,0 +1,18 @@
+hash: ba43d065e949aabaf00b67f2c0840f6f38ac02b0e4b0ba2998a333f066a4847f
+updated: 2017-06-29T10:52:52.011444548-05:00
+imports:
+- name: github.com/golang/protobuf
+  version: 69b215d01a5606c843240eab4937eab3acee6530
+  subpackages:
+  - proto
+  - protoc-gen-go
+  - protoc-gen-go/descriptor
+  - protoc-gen-go/generator
+  - protoc-gen-go/plugin
+- name: github.com/kr/pretty
+  version: cfb55aafdaf3ec08f0db22699ab822c50091b1c4
+- name: github.com/pkg/errors
+  version: a2d6902c6d2a2f194eb3fb474981ab7867c81505
+testImports:
+- name: github.com/kr/text
+  version: 7cafcd837844e784b526369c9bce262804aebc60

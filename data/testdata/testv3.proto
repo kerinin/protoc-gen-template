@@ -1,0 +1,119 @@
+// syntax comment
+syntax = "proto3";
+
+option go_package = "testv3";
+
+// package comment
+package testv3;
+
+// import comment
+import "src/template/meta.proto";
+
+// file_option comment
+option (template.file_meta) = { 
+  visibility: PRIVATE, 
+  tags: ["tag1", "tag2"],
+  extra: { key: "k", value: "v" },
+};
+
+// Service comment
+service Service {
+  // service_meta comment
+  option (template.service_meta) = {
+    visibility: PRIVATE, 
+    addr: "grpc.example.com:50051", 
+    tags: ["tag1", "tag2"],
+    extra: { key: "k", value: "v" },
+  };
+
+  // Method comment
+  rpc Method (Message) returns (stream Message) {
+    // method_meta comment
+    option (template.method_meta) = {
+      visibility: PRIVATE,
+      tags: ["tag1", "tag2"],
+      extra: { key: "k", value: "v" },
+    };
+
+    // option (google.api.http) = {
+    //   get: "/imap_config/:email_address"
+    // };
+  };
+}
+
+service OtherService {}
+
+// Enum comment
+enum Enum {
+  // enum_meta comment
+  option (template.enum_meta) = {
+    visibility: PRIVATE,
+    tags: ["tag1", "tag2"],
+    extra: { key: "k", value: "v" },
+  };
+
+  // Enum_DEFAULT comment
+  DEFAULT = 0 [(template.enum_value_meta) = { visibility: PRIVATE, tags: ["tag1", "tag2"], extra: { key: "k", value: "v" }}];
+}
+
+enum OtherEnum {
+  OTHER_DEFAULT = 0;
+}
+
+// Message comment
+message Message {
+  // message_meta comment
+  option (template.message_meta) = {
+    visibility: PRIVATE,
+    tags: ["tag1", "tag2"],
+    extra: { key: "k", value: "v" },
+  };
+
+  // EmbeddedEnum comment
+  enum EmbeddedEnum {
+    // EmbeddedEnum_EMBEDDED_DEFAULT comment
+    EMBEDDED_DEFAULT = 0;
+    EMBEDDED_OTHER = 1; // EmbeddedEnum_EMBEDDED_OTHER trailing comment
+  }
+
+  enum OtherEmbeddedEnum {
+    EMBEDDED_OTHER_DEFAULT = 0;
+  }
+
+  // EmbeddedMessage comment
+  message EmbeddedMessage {
+    // string_field comment
+    string string_field = 1;
+    uint32 uint32_field = 2; // uint32_field trailing comment
+  }
+
+  message OtherEmbeddedMessage {}
+
+  // string_field comment
+  string string_field = 1 [deprecated = true, (template.field_meta) = { visibility: PRIVATE, example_string: "example", generator: "email", tags: ["tag1", "tag2"], extra: { key: "k", value: "v" }}];
+
+  // repeated_string_field comment
+  repeated string repeated_string_field = 2;
+
+  // enum_field comment
+  Enum enum_field = 3; 
+
+  // other_message_field comment
+  OtherMessage other_message_field = 4;
+
+  // oneof_field comment
+  oneof oneof_field {
+    // option (template.oneof_meta) = "oneof_option_value";
+
+    // bool_field comment
+    bool bool_field = 5;
+  }
+
+  // embedded_enum_field comment
+  EmbeddedEnum embedded_enum_field = 6;
+
+  // embedded_message_field comment
+  EmbeddedMessage embedded_message_field = 7;
+}
+
+message OtherMessage {}
