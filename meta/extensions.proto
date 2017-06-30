@@ -5,7 +5,7 @@ syntax = "proto3";
 // This provides a set of options for annotating protobuf source code which 
 // are parse by `protoc-gen-template` and exposed in the data available to
 // templates.
-package template;
+package meta;
 option go_package = "github.com/ReturnPath/protoc-gen-template/meta";
 option (file_meta) = {
   visibility: PRIVATE,
