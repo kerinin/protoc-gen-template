@@ -1,7 +1,6 @@
 # Build customization
 builds:
-  - main: main.go
-    goos:
+  - goos:
       - windows
       - darwin
       - linux
