@@ -6,7 +6,3 @@ builds:
       - linux
     goarch:
       - amd64
-
-# Archive customization
-archive:
-  format: binary
