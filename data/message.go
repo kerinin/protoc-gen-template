@@ -141,6 +141,40 @@ func (m Message) Fields() FieldSlice {
 	return vs
 }
 
+// Scalars returns a slice of paths to all (non-cyclical) scalars reachable within the message.
+func (m Message) Scalars() ScalarPathSlice {
+	return m.scalars([]messageID{})
+}
+
+func (m Message) scalars(ancestors []messageID) ScalarPathSlice {
+	// Messages may contain references to themselves or cycle in other ways
+	for _, ancestor := range ancestors {
+		if ancestor == m.id {
+			return nil
+		}
+	}
+
+	// Outer: leaf scalars
+	// Inner: Fields enclosing the leaf
+	vs := make([]ScalarPath, 0, len(m.fields))
+	for _, v := range m.fields {
+		switch m.data.fields[v].Type {
+		case descriptor.FieldDescriptorProto_TYPE_GROUP:
+			continue
+		case descriptor.FieldDescriptorProto_TYPE_MESSAGE:
+			for _, fieldScalars := range m.data.fields[v].TypeMessage().scalars(append(ancestors, m.id)) {
+				// This could be done more efficiently but whatever
+				wrapped := append(ScalarPath{*m.data.fields[v]}, fieldScalars...)
+				vs = append(vs, wrapped)
+			}
+		default:
+			vs = append(vs, []Field{*m.data.fields[v]})
+		}
+	}
+	sort.Sort(sortedScalarsByIndex(vs))
+	return vs
+}
+
 // Messages returns a slice of nested messages
 func (m Message) Messages() MessageSlice {
 	vs := make([]Message, 0, len(m.messages))

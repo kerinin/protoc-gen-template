@@ -14,6 +14,11 @@ type fieldID string
 // FieldSlice is a slice of fields
 type FieldSlice []Field
 
+type ScalarPath []Field
+type ScalarPathSlice []ScalarPath
+
+func (s ScalarPath) Scalar() Field { return s[len(s)-1] }
+
 // Visible returns the visible values in the slice
 func (s FieldSlice) Visible() FieldSlice {
 	outputs := make([]Field, 0, len(s))
@@ -317,3 +322,9 @@ type sortedFieldsByIndex []Field
 func (s sortedFieldsByIndex) Len() int           { return len(s) }
 func (s sortedFieldsByIndex) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 func (s sortedFieldsByIndex) Less(i, j int) bool { return s[i].idx < s[j].idx }
+
+type sortedScalarsByIndex []ScalarPath
+
+func (s sortedScalarsByIndex) Len() int           { return len(s) }
+func (s sortedScalarsByIndex) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s sortedScalarsByIndex) Less(i, j int) bool { return s[i][0].idx < s[j][0].idx }

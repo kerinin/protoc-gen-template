@@ -7,6 +7,8 @@
 {{ range .Files }}File: {{ . }}
 {{ end }}
 {{ range .Messages }}Message: {{ . }}
+{{ range .Scalars }}  Scalar: {{ . }} ({{ .Scalar }})
+{{ end }}
 {{ end }}
 {{ range .Methods }}Method: {{ . }}
 {{ end }}

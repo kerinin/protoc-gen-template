@@ -58,7 +58,7 @@ File {{ .Name }} contains the following message types:
 ```
 
 ```sh
-protoc --template_out=template.md.tpl:. testdata/test.proto
+protoc --template_out=template.md.tpl:. data/testdata/test.proto
 ```
 
 Will generate something like:
@@ -102,7 +102,7 @@ docker-compose run compile
 For quickly checking output
 
 ```sh
-go build && cat testdata/dump.pb | ./protoc-gen-template -template testdata/template.tmpl | go run decode/main.go
+go build && cat data/testdata/dump.pb | ./protoc-gen-template -template data/testdata/template.tmpl | go run decode/main.go
 ```
 
 To update testdata with the contents of `testdata/*.proto`
