@@ -3,7 +3,6 @@ module github.com/kerinin/protoc-gen-template
 go 1.13
 
 require (
-	github.com/ReturnPath/protoc-gen-template v0.1.3
 	github.com/golang/protobuf v1.5.0
 	github.com/iancoleman/strcase v0.1.3
 	github.com/kr/pretty v0.0.0-20160823170715-cfb55aafdaf3

@@ -83,7 +83,7 @@ File test.proto contains the following message types:
 ## Install
 
 ```sh
-go get -u github.com/ReturnPath/protoc-gen-template
+go get -u github.com/kerinin/protoc-gen-template
 ```
 
 ## Build

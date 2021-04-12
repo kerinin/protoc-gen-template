@@ -10,9 +10,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/ReturnPath/protoc-gen-template/data"
 	"github.com/golang/protobuf/proto"
 	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
+	"github.com/kerinin/protoc-gen-template/data"
 	"github.com/pkg/errors"
 )
 

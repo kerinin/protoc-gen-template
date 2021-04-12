@@ -1,4 +1,4 @@
 compile:
   build: .
   volumes:
-   - .:/go/src/github.com/ReturnPath/protoc-gen-template
+   - .:/go/src/github.com/kerinin/protoc-gen-template

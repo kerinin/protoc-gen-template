@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ReturnPath/protoc-gen-template/meta"
+	"github.com/kerinin/protoc-gen-template/meta"
 	"github.com/kr/pretty"
 	"google.golang.org/protobuf/descriptor"
 	"google.golang.org/protobuf/proto"

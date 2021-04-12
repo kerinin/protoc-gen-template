@@ -1,7 +1,7 @@
 package data
 
 import (
-	"github.com/ReturnPath/protoc-gen-template/meta"
+	"github.com/kerinin/protoc-gen-template/meta"
 	"google.golang.org/protobuf/proto"
 	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )

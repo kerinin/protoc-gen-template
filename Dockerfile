@@ -25,14 +25,14 @@ ENV GOBIN /go/bin
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
-RUN mkdir -p /go/src/github.com/ReturnPath/protoc-gen-template/vendor
+RUN mkdir -p /go/src/github.com/kerinin/protoc-gen-template/vendor
 
-COPY ./vendor /go/src/github.com/ReturnPath/protoc-gen-template/vendor
-RUN cd /go/src/github.com/ReturnPath/protoc-gen-template/vendor/google.golang.org/protobuf/protoc-gen-go && go install
+COPY ./vendor /go/src/github.com/kerinin/protoc-gen-template/vendor
+RUN cd /go/src/github.com/kerinin/protoc-gen-template/vendor/google.golang.org/protobuf/protoc-gen-go && go install
 
-COPY . /go/src/github.com/ReturnPath/protoc-gen-template
-WORKDIR /go/src/github.com/ReturnPath/protoc-gen-template
+COPY . /go/src/github.com/kerinin/protoc-gen-template
+WORKDIR /go/src/github.com/kerinin/protoc-gen-template
 
-CMD ["/bin/bash", "/go/src/github.com/ReturnPath/protoc-gen-template/build.sh"]
+CMD ["/bin/bash", "/go/src/github.com/kerinin/protoc-gen-template/build.sh"]
 
 

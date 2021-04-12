@@ -6,7 +6,7 @@ syntax = "proto3";
 // are parse by `protoc-gen-template` and exposed in the data available to
 // templates.
 package meta;
-option go_package = "github.com/ReturnPath/protoc-gen-template/meta";
+option go_package = "github.com/kerinin/protoc-gen-template/meta";
 option (file_meta) = {
   visibility: PRIVATE,
 };
