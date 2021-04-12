@@ -2,8 +2,8 @@ package data
 
 import (
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"google.golang.org/protobuf/proto"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type methodID string
@@ -107,11 +107,8 @@ func newMethodMetadata(in *descriptor.MethodOptions) (out meta.MethodMetadata) {
 		_ = recover()
 	}()
 
-	if ext, err := proto.GetExtension(in, meta.E_MethodMeta); err == nil {
-		return *ext.(*meta.MethodMetadata)
-	}
-
-	return
+	ext := proto.GetExtension(in, meta.E_MethodMeta)
+	return *ext.(*meta.MethodMetadata)
 }
 
 func derefMethodOptions(o *descriptor.MethodOptions) (_ descriptor.MethodOptions) {

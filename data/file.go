@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"google.golang.org/protobuf/proto"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type fileID string
@@ -155,11 +155,8 @@ func newFileMetadata(in *descriptor.FileOptions) (out meta.FileMetadata) {
 		_ = recover()
 	}()
 
-	if ext, err := proto.GetExtension(in, meta.E_FileMeta); err == nil {
-		return *ext.(*meta.FileMetadata)
-	}
-
-	return
+	ext := proto.GetExtension(in, meta.E_FileMeta)
+	return *ext.(*meta.FileMetadata)
 }
 
 func derefFileOptions(o *descriptor.FileOptions) (_ descriptor.FileOptions) {

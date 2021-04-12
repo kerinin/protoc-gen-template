@@ -2,8 +2,8 @@ package data
 
 import (
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"google.golang.org/protobuf/proto"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type enumID string
@@ -130,11 +130,8 @@ func newEnumMetadata(in *descriptor.EnumOptions) (out meta.EnumMetadata) {
 		_ = recover()
 	}()
 
-	if ext, err := proto.GetExtension(in, meta.E_EnumMeta); err == nil {
-		return *ext.(*meta.EnumMetadata)
-	}
-
-	return
+	ext := proto.GetExtension(in, meta.E_EnumMeta)
+	return *ext.(*meta.EnumMetadata)
 }
 
 func derefEnumOptions(o *descriptor.EnumOptions) (_ descriptor.EnumOptions) {

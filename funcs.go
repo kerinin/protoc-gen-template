@@ -9,7 +9,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/golang/protobuf/protoc-gen-go/generator"
+	"github.com/iancoleman/strcase"
 )
 
 // Funcs is the template.FuncMap used for template execution
@@ -46,7 +46,7 @@ func GoFmt(s string) (string, error) {
 
 // UpperCamel converts a snake_case string into CamelCase
 func UpperCamel(s string) string {
-	return generator.CamelCase(s)
+	return strcase.ToCamel(s)
 }
 
 // Upper converts a string to uppercase
@@ -59,7 +59,7 @@ func LowerCamel(s string) string {
 	if len(s) == 0 {
 		return s
 	}
-	b := []byte(generator.CamelCase(s))
+	b := []byte(strcase.ToCamel(s))
 	b[0] = bytes.ToLower(b[0:1])[0]
 	return string(b)
 }

@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"google.golang.org/protobuf/proto"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type fieldID string
@@ -301,11 +301,8 @@ func newFieldMetadata(in *descriptor.FieldOptions) (out meta.FieldMetadata) {
 		_ = recover()
 	}()
 
-	if ext, err := proto.GetExtension(in, meta.E_FieldMeta); err == nil {
-		return *ext.(*meta.FieldMetadata)
-	}
-
-	return
+	ext := proto.GetExtension(in, meta.E_FieldMeta)
+	return *ext.(*meta.FieldMetadata)
 }
 
 func derefFieldOptions(o *descriptor.FieldOptions) (_ descriptor.FieldOptions) {

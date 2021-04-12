@@ -4,8 +4,8 @@ import (
 	"sort"
 
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"google.golang.org/protobuf/proto"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type messageID string
@@ -178,11 +178,8 @@ func newMessageMetadata(in *descriptor.MessageOptions) (out meta.MessageMetadata
 		_ = recover()
 	}()
 
-	if ext, err := proto.GetExtension(in, meta.E_MessageMeta); err == nil {
-		return *ext.(*meta.MessageMetadata)
-	}
-
-	return
+	ext := proto.GetExtension(in, meta.E_MessageMeta)
+	return *ext.(*meta.MessageMetadata)
 }
 
 func derefMessageOptions(o *descriptor.MessageOptions) (_ descriptor.MessageOptions) {

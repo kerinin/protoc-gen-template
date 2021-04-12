@@ -3,7 +3,7 @@ package data
 import (
 	"sort"
 
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type oneofID string

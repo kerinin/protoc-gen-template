@@ -2,8 +2,8 @@ package data
 
 import (
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"google.golang.org/protobuf/proto"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 type serviceID string
@@ -102,11 +102,8 @@ func newServiceMetadata(in *descriptor.ServiceOptions) (out meta.ServiceMetadata
 		_ = recover()
 	}()
 
-	if ext, err := proto.GetExtension(in, meta.E_ServiceMeta); err == nil {
-		return *ext.(*meta.ServiceMetadata)
-	}
-
-	return
+	ext := proto.GetExtension(in, meta.E_ServiceMeta)
+	return *ext.(*meta.ServiceMetadata)
 }
 
 func derefServiceOptions(o *descriptor.ServiceOptions) (_ descriptor.ServiceOptions) {

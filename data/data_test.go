@@ -7,10 +7,10 @@ import (
 	"testing"
 
 	"github.com/ReturnPath/protoc-gen-template/meta"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
-	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"github.com/kr/pretty"
+	"google.golang.org/protobuf/descriptor"
+	"google.golang.org/protobuf/proto"
+	plugin "google.golang.org/protobuf/protoc-gen-go/plugin"
 )
 
 var request plugin.CodeGeneratorRequest

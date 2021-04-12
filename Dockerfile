@@ -28,7 +28,7 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 RUN mkdir -p /go/src/github.com/ReturnPath/protoc-gen-template/vendor
 
 COPY ./vendor /go/src/github.com/ReturnPath/protoc-gen-template/vendor
-RUN cd /go/src/github.com/ReturnPath/protoc-gen-template/vendor/github.com/golang/protobuf/protoc-gen-go && go install
+RUN cd /go/src/github.com/ReturnPath/protoc-gen-template/vendor/google.golang.org/protobuf/protoc-gen-go && go install
 
 COPY . /go/src/github.com/ReturnPath/protoc-gen-template
 WORKDIR /go/src/github.com/ReturnPath/protoc-gen-template
