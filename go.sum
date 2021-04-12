@@ -1,0 +1,7 @@
+github.com/ReturnPath/protoc-gen-template v0.1.3 h1:/vBIJlK/aA4ybP0pcH4aG4Jo/7MZrxLSdKzFz6VYi0Y=
+github.com/ReturnPath/protoc-gen-template v0.1.3/go.mod h1:h0dEagHBmMC8k1v2cOahib7GJMg2aBrcQ2fYMohm4nM=
+github.com/golang/protobuf v0.0.0-20170217234432-69b215d01a56 h1:i2EQlrDjHdBwt1vVWTmCCw9scBgrSxxF/KWs//OHQcY=
+github.com/golang/protobuf v0.0.0-20170217234432-69b215d01a56/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
+github.com/kr/pretty v0.0.0-20160823170715-cfb55aafdaf3/go.mod h1:Bvhd+E3laJ0AVkG0c9rmtZcnhV0HQ3+c3YxxqTvc/gA=
+github.com/pkg/errors v0.7.1-0.20160627222352-a2d6902c6d2a h1:dKpZ0nc8i7prliB4AIfJulQxsX7whlVwi6j5HqaYUl4=
+github.com/pkg/errors v0.7.1-0.20160627222352-a2d6902c6d2a/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
