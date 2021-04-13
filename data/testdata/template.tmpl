@@ -7,7 +7,7 @@
 {{ range .Files }}File: {{ . }}
 {{ end }}
 {{ range .Messages }}Message: {{ . }}
-{{ range .Scalars }}  Scalar: {{ . }} ({{ .Scalar }})
+{{ range .Scalars }}  Scalar: {{ . }} ({{ .Ancestors }} : {{ .Scalar }})
 {{ end }}
 {{ end }}
 {{ range .Methods }}Method: {{ . }}

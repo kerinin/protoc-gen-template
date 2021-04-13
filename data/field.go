@@ -17,6 +17,10 @@ type FieldSlice []Field
 type ScalarPath []Field
 type ScalarPathSlice []ScalarPath
 
+// A list of fields enclosing the scalar, excluding the scalar.
+func (s ScalarPath) Ancestors() []Field { return s[:len(s)-1] }
+
+// The final scalar field in the path. Always be a scalar-typed field.
 func (s ScalarPath) Scalar() Field { return s[len(s)-1] }
 
 // Visible returns the visible values in the slice
